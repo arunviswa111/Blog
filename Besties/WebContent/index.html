@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-cookies.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+<title>index</title>
+</head>
+<style>
+body
+{
+ background-image:url("https://zellox.com/wp-content/uploads/2016/02/website-background.jpg");
+}
+@import url(//fonts.googleapis.com/css?family=Roboto:500,700);
+
+
+
+</style>
+<body>
+    <nav class="navbar-black">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Besties</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#/">Home</a></li>
+      <li><a href="#">About Us</a></li>
+       <li class="dropdown">
+       <a class="dropdown-toggle" data-toggle="dropdown"  href="#/Blog">Friend<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#/viewfriend">View Friend</a></li>
+       <li><a href="#/search_friend">Search Friend</a>        </li>
+      </ul>
+    </li>
+     <li class="dropdown">
+       <a class="dropdown-toggle" data-toggle="dropdown"  href="#">Blog<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#/list_blog">List Blog</a></li>
+       <li><a href="#/create_blog">Create Blog</a>        </li>
+      </ul>
+    </li>
+    <li class="dropdown">
+       <a class="dropdown-toggle" data-toggle="dropdown"  href="#/Blog">Job<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">View Job</a></li>
+       <li><a href="#">Search Job</a>        </li>
+      </ul>
+    </li>
+    <li class="dropdown">
+       <a class="dropdown-toggle" data-toggle="dropdown"  href="#">Chat<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#/chat">Lets Chat</a></li>
+      
+      </ul>
+    </li>
+   
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+   
+<!--       <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+      <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+     </div>
+    
+    </ul>
+  </div>
+</nav>
+   
+   
+   
+    <div ng-view></div>
+
+   
+</body>
+<script src="app.js"></script>
+
+<script src="Controller_User.js"></script>
+<script src="usercontroller.js"></script>
+<script src="UserService.js"></script>
+<script src="c_blog/BlogController.js"></script>
+<script src="c_blog/BlogService.js"></script>
+<script src="FriendController.js"></script>
+<script src="c_chat/ChatService.js"></script>
+<script src="c_chat/ChatController.js"></script>
+<script src="FriendService.js"></script>
+</html>

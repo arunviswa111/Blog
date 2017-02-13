@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <meta charset="ISO-8859-1">
+
+<title>Create Blog</title>
+</head>
+<body>
+
+
+	<div class="generic-container" ng-controller="BlogController as ctrl">
+
+
+		<!-- <div ng-hide='ctrl.Userdetails.errorMessage=="" '>
+			<div class="alert alert-danger fade in">Error :
+				{{ctrl.Userdetails.errorMessage}}</div>
+
+		</div>
+
+ -->
+	<!-- 	<div ng-show='ctrl.Userdetails.errorMessage=="" '> -->
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="lead">Create Blog</span>
+				</div>
+				<div class="formcontainer">
+					<form ng-submit="ctrl.submit()" name="myForm"
+						class="form-horizontal">
+
+						
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for="title">Title</label>
+								<div class="col-md-7">
+									<input type="texy" ng-model="ctrl.Blog.title"
+										id="password" class="username form-control input-sm"
+										placeholder="Enter your blog title" required ng-minlength="3" />
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for="description">description</label>
+								<div class="col-md-7">
+									<input type="text" ng-model="ctrl.Blog.description" id="description"
+										class="address form-control input-sm"
+										placeholder="Enter description" required />
+
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for="reason">reason</label>
+								<div class="col-md-7">
+									<input type="tel" ng-model="ctrl.Blog.reason" id="reason"
+										class="mobile form-control input-sm"
+										placeholder="Enter your reason" required />
+
+								</div>
+							</div>
+						</div>
+
+
+						
+
+						<div class="row">
+							<div class="form-actions floatRight">
+								<input type="submit" value="Create"
+									class="btn btn-primary btn-sm">
+								<button type="button" ng-click="ctrl.reset()"
+									class="btn btn-warning btn-sm">Reset Form</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,39 @@
+<div class="container" ng-controller="BlogController as ctrl">
+
+	<p>
+	<p>
+	<p>
+	<p>
+	
+	<p>
+	<p>
+	<p>
+	<p>
+	
+	<div class="form-group has-feedback"></div>
+
+  Search
+
+  <p><input type="text" ng-model="search_text"></p>
+
+
+	<div ng-repeat="blog in ctrl.blogs| filter: search_text">
+
+		<fieldset>
+			<legend></legend>
+			
+			<p>Title: {{blog.title}}  
+
+			<p>ID: {{blog.id}} &nbsp; &nbsp;&nbsp; Name: {{blog.userid}}
+			    &nbsp; &nbsp;&nbsp;  <!--  <button type="button"  <!-- ng-click="ctrl.sendFriendRequest(Userdetails.userid)" 
+			       class="btn btn-warning btn-sm">Send Friend Request</button> -->
+			  </p>
+
+			<p>Description: {{blog.description}} <!-- &nbsp; &nbsp;&nbsp; Mobile:{{Userdetails.contact}}</p>
+
+			<p> Address:{{Userdetails.address}} &nbsp; &nbsp;&nbsp; Role :{{Userdetails.role}}</p>
+ -->		</fieldset>
+	</div>
+
+
+</div>
