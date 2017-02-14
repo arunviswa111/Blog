@@ -8,6 +8,7 @@ app
 						'BlogService',
 						'$location',
 						'$rootScope',
+						
 						'$http',
 						function($scope, BlogService, $location, $rootScope,
 								$http) {
@@ -15,7 +16,7 @@ app
 							var self = this;
 							self.Blog = {
 								userid : '',
-							//	id : '',
+								// id : '',
 								title: '',
 								description: '',
 								status : '',

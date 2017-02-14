@@ -16,61 +16,95 @@
 <title>index</title>
 </head>
 <style>
-body
-{
- background-image:url("https://zellox.com/wp-content/uploads/2016/02/website-background.jpg");
+ /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom:10;
+      border-radius:40;
+      background: transperant !important;
+     
+    }
+	body{
+	background-image:url(http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/09/plain-black-full-hd-background_1.jpg);
+background-size:150%;
+background-repeat: no-repeat;
+
+
 }
-@import url(//fonts.googleapis.com/css?family=Roboto:500,700);
+    .dropdown{
+	
+	padding-top:30px;padding-right:10px;padding-left:10px;
+	}
+    
+    </style>
+	<script type="text/javascript">
+
+$(document).ready(
+		function() {
+			$(".dropdown").hover(
+					function() {
+						$('.dropdown-menu', this).not('.in .dropdown-menu')
+								.stop(true, true).slideDown("400");
+						$(this).toggleClass('open');
+					},
+					function() {
+						$('.dropdown-menu', this).not('.in .dropdown-menu')
+								.stop(true, true).slideUp("400");
+						$(this).toggleClass('open');
+					});
+		});
 
 
-
-</style>
+</script>
+    
 <body>
-    <nav class="navbar-black">
+
+<nav class="navbar navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Besties</a>
+   
+     
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#/">Home</a></li>
-      <li><a href="/about">About Us</a></li>
-       <li class="dropdown">
-       <a class="dropdown-toggle" data-toggle="dropdown"  href="#/Blog">Friend<span class="caret"></span></a>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+	  <li><img src="http://tbn.freelogodesign.org/ba451aa5-dda4-465e-8428-5f19620e9e63.png?1487072920623" width="150" height="150" alt="Logo Thing main logo"></a>
+</li>
+      <li class="dropdown"><a style="font-family:Comic Sans MS; color:white;"  href="home"><span class="fa fa-home">Home</span></a>
+      <li class="dropdown">
+       <a class="dropdown-toggle"  style="font-family:Comic Sans MS;color:white;"  data-toggle="dropdown"  href="#/Blog">Friend<span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a href="#/view_friend">View Friend</a></li>
-       <li><a href="#/search_friend">Search Friend</a>        </li>
+        <li><a href="#//view_friend">View Friend</a></li>
+       <li><a href="#/search_friend">Search Friend</a></li>
       </ul>
     </li>
-     <li class="dropdown">
-       <a class="dropdown-toggle" data-toggle="dropdown"  href="#">Blog<span class="caret"></span></a>
+	<li class="dropdown">
+       <a class="dropdown-toggle"  style="font-family:Comic Sans MS; color:white;"   data-toggle="dropdown"  href="#">Blog<span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#/list_blog">List Blog</a></li>
-       <li><a href="#/create_blog">Create Blog</a>        </li>
+       <li><a href="#/create_blog">Create Blog</a></li>
       </ul>
     </li>
     <li class="dropdown">
-       <a class="dropdown-toggle" data-toggle="dropdown"  href="#/Blog">Job<span class="caret"></span></a>
+       <a class="dropdown-toggle"  style="font-family:Comic Sans MS; color:white;" data-toggle="dropdown"  href="#/Blog">Job<span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a href="#/post_job">Post Job</a></li>
+        <li><a href="#/post_job">View Job</a></li>
        <li><a href="#/search_job">Search Job</a>        </li>
       </ul>
     </li>
     <li class="dropdown">
-       <a class="dropdown-toggle" data-toggle="dropdown"  href="#">Chat<span class="caret"></span></a>
+       <a class="dropdown-toggle"  style="font-family:Comic Sans MS;color:white;"  data-toggle="dropdown"  href="#">Chat<span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#/chat">Lets Chat</a></li>
       
       </ul>
     </li>
-   
-    </ul>
+     </ul>
     <ul class="nav navbar-nav navbar-right">
-   
-<!--       <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-      <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-     </div>
-    
-    </ul>
+	
+		<li class="dropdown"><a  style="font-family:Comic Sans MS;color:white;"   href="#/login"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+		
+	
+	</ul>
+    </div>
   </div>
 </nav>
    
@@ -92,3 +126,6 @@ body
 <script src="c_chat/ChatController.js"></script>
 <script src="FriendService.js"></script>
 </html>
+
+
+
