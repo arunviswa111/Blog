@@ -1,5 +1,7 @@
 package com.niit.controller;
 
+
+
 import java.util.Date;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -19,6 +21,7 @@ public class ChatController {
 		return new OutputMessage(message,new Date());
 	}
 }
+
 
 
 

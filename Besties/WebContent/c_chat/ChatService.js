@@ -6,7 +6,7 @@ app.service("ChatService", function($q, $timeout) {
     }, messageIds = [];
     
     service.RECONNECT_TIMEOUT = 30000;
-    service.SOCKET_URL = "/CollabBackEnd/chat";
+    service.SOCKET_URL = "/Bestiesb/chat";
     service.CHAT_TOPIC = "/topic/message";
     service.CHAT_BROKER = "/app/chat";
     
@@ -35,7 +35,10 @@ app.service("ChatService", function($q, $timeout) {
       var message = JSON.parse(data), out = {};
       out.message = message.message;
       out.time = new Date(message.time);
-     
+     /* if (_.contains(messageIds, message.id)) {
+        out.self = true;
+        messageIds = _.remove(messageIds, message.id);
+      }*/
       return out;
     };
     

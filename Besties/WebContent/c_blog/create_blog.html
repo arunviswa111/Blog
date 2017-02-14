@@ -10,26 +10,36 @@
   <meta charset="ISO-8859-1">
 
 <title>Create Blog</title>
+<style>
+body { 
+   background-image:url(http://cliparts.co/cliparts/rin/rpp/rinrpp4BT.jpg);
+   background-repeat: no-repeat;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Palatino Linotype'!important;
+    font-size:15px;
+}
+.panel-default{
+background:none;
+}
+.row input[type="text"] {
+  box-shadow:none;
+  border-color:#ddd;
+  border-radius:0;
+  background:none;
+}
+
+</style>
 </head>
 <body>
 
 
 	<div class="generic-container" ng-controller="BlogController as ctrl">
-
-
-		<!-- <div ng-hide='ctrl.Userdetails.errorMessage=="" '>
-			<div class="alert alert-danger fade in">Error :
-				{{ctrl.Userdetails.errorMessage}}</div>
-
-		</div>
-
- -->
-	<!-- 	<div ng-show='ctrl.Userdetails.errorMessage=="" '> -->
-
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span class="lead">Create Blog</span>
-				</div>
+    <div class="panel panel-default">
+				<legend><center >Create Blog</center></legend>
+				
 				<div class="formcontainer">
 					<form ng-submit="ctrl.submit()" name="myForm"
 						class="form-horizontal">
@@ -39,9 +49,9 @@
 							<div class="form-group col-md-12">
 								<label class="col-md-2 control-lable" for="title">Title</label>
 								<div class="col-md-7">
-									<input type="texy" ng-model="ctrl.Blog.title"
-										id="password" class="username form-control input-sm"
-										placeholder="Enter your blog title" required ng-minlength="3" />
+									<input type="text" ng-model="ctrl.Blog.title"
+										id="title" class=" form-control input-sm"
+										placeholder="blog title" required ng-minlength="3" />
 								</div>
 							</div>
 						</div>
@@ -49,11 +59,11 @@
 
 						<div class="row">
 							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="description">description</label>
+								<label class="col-md-2 control-lable" for="description">Description</label>
 								<div class="col-md-7">
 									<input type="text" ng-model="ctrl.Blog.description" id="description"
-										class="address form-control input-sm"
-										placeholder="Enter description" required />
+										class=" form-control input-sm"
+										placeholder="description" required />
 
 								</div>
 							</div>
@@ -61,11 +71,11 @@
 
 						<div class="row">
 							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="reason">reason</label>
+								<label class="col-md-2 control-lable" for="reason">Reason</label>
 								<div class="col-md-7">
-									<input type="tel" ng-model="ctrl.Blog.reason" id="reason"
-										class="mobile form-control input-sm"
-										placeholder="Enter your reason" required />
+									<input type="text" ng-model="ctrl.Blog.reason" id="reason"
+										class=" form-control input-sm"
+										placeholder="reason" required />
 
 								</div>
 							</div>
@@ -76,10 +86,10 @@
 
 						<div class="row">
 							<div class="form-actions floatRight">
-								<input type="submit" value="Create"
-									class="btn btn-primary btn-sm">
+								<button type="submit" 
+									class="btn btn-default btn-create-submit btn-block m-t-md">Create</button>
 								<button type="button" ng-click="ctrl.reset()"
-									class="btn btn-warning btn-sm">Reset Form</button>
+									class="btn btn-default btn-reset-submit btn-block m-t-md">Reset</button>
 							</div>
 						</div>
 					</form>

@@ -21,12 +21,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.niit.model.Blog;
 import com.niit.model.Friend;
+import com.niit.model.Job;
 import com.niit.model.Userdetails;
 
 
 @EnableWebMvc
 @Configuration
-@ComponentScan("com.niit.collabackend")
+@ComponentScan("com.niit.Bestiesb")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
 	@Bean(name = "dataSource")
@@ -58,6 +59,7 @@ public class ApplicationContextConfig {
 	    sessionBuilder.addProperties(getHibernateProperties());
 	    sessionBuilder.addAnnotatedClasses(Userdetails.class);
 	    sessionBuilder.addAnnotatedClasses(Blog.class);
+	    sessionBuilder.addAnnotatedClasses(Job.class);
 	    sessionBuilder.addAnnotatedClasses(Friend.class);
 	    return sessionBuilder.buildSessionFactory();
 	}

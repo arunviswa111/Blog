@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 //similar to dispatcher servlet.xml
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.niit.collabbackend")
+@ComponentScan(basePackages = "com.niit.Bestiesb")
 public class AppConfig extends WebMvcConfigurerAdapter {
 	private static final Logger logger = 
 			LoggerFactory.getLogger(AppConfig.class);

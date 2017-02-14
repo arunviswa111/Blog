@@ -37,6 +37,18 @@ app.config(function($routeProvider) {
     templateUrl : 'pages/search_friend.html',
     controller  : 'FriendController'
   })
+  .when('/view_friend', {
+    templateUrl : 'pages/view_friend.html',
+    controller  : 'FriendController'
+  })
+  .when('/post_job', {
+    templateUrl : 'c_job/post_job.html',
+    controller  : 'JobController'
+  })
+  .when('/search_job', {
+    templateUrl : 'c_job/search_job.html',
+    controller  : 'JobController'
+  })
 
 
   .otherwise({redirectTo: '/'});
