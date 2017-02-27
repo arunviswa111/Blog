@@ -4,11 +4,8 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
-
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,54 +22,38 @@ import com.niit.model.Job;
 import com.niit.model.Userdetails;
 
 
-@EnableWebMvc
 @Configuration
-@ComponentScan("com.niit.Bestiesb")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
-	@Bean(name = "dataSource")
+	@Autowired
+	@Bean
+	public SessionFactory sessionFactory() {
+		LocalSessionFactoryBuilder lsf=
+				new LocalSessionFactoryBuilder(getDataSource());
+		Properties hibernateProperties=new Properties();
+		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+		hibernateProperties.setProperty("hibernate.show_sql", "true");
+		lsf.addProperties(hibernateProperties);
+		Class classes[]={Job.class,Userdetails.class,Friend.class,Blog.class};
+		return lsf.addAnnotatedClasses(classes)
+
+		   .buildSessionFactory();
+	}
+	@Bean(name="dataSource")
 	public DataSource getDataSource() {
-	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-	    dataSource.setDriverClassName("org.h2.Driver");
-	    dataSource.setUrl("jdbc:h2:tcp://localhost/~/arunproject2");
-	    dataSource.setUsername("sa");
-	    dataSource.setPassword("");
-	    System.out.println("creating datasource");
+	    BasicDataSource dataSource = new BasicDataSource();
+	    dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+	    dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
+	    dataSource.setUsername("besties");
+	    dataSource.setPassword("viswa");
 	    return dataSource;
 	}
-	
-	private Properties getHibernateProperties() {
-	    Properties properties = new Properties();
-	    properties.put("hibernate.show_sql", "true");
-	    properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-	    properties.put("hibernate.hbm2ddl.auto","update");
-	    System.out.println("properties created..");
-	    return properties;
-	}
-		
-	@Autowired(required=true)
-	@Bean(name = "sessionFactory")
-	public SessionFactory getSessionFactory(DataSource dataSource) {
-	 
-		System.out.println("sessionfactory created..");
-	    LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-	    sessionBuilder.addProperties(getHibernateProperties());
-	    sessionBuilder.addAnnotatedClasses(Userdetails.class);
-	    sessionBuilder.addAnnotatedClasses(Blog.class);
-	    sessionBuilder.addAnnotatedClasses(Job.class);
-	    sessionBuilder.addAnnotatedClasses(Friend.class);
-	    return sessionBuilder.buildSessionFactory();
-	}
-	@Autowired(required=true)
-	@Bean(name = "transactionManager")
-	public HibernateTransactionManager getTransactionManager(
-	        SessionFactory sessionFactory) {
-	    HibernateTransactionManager transactionManager = new HibernateTransactionManager(
-	            sessionFactory);
-	 
-	    return transactionManager;
+	@Autowired
+	@Bean
+	public HibernateTransactionManager hibTransManagement(){
+		return new HibernateTransactionManager(sessionFactory());
 	}
 
-	
+
 }
-

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="myApp" ng-controller="UserController as ctrl">
 <head>
 
    <meta charset="utf-8">
@@ -68,30 +68,30 @@ $(document).ready(
       <ul class="nav navbar-nav">
 	  <li><img src="http://tbn.freelogodesign.org/ba451aa5-dda4-465e-8428-5f19620e9e63.png?1487072920623" width="150" height="150" alt="Logo Thing main logo"></a>
 </li>
-      <li class="dropdown"><a style="font-family:Comic Sans MS; color:white;"  href="home"><span class="fa fa-home">Home</span></a>
+      <li class="dropdown"><a style="font-family:Comic Sans MS; color:red;"  href="home"><span class="fa fa-home">Home</span></a>
       <li class="dropdown">
-       <a class="dropdown-toggle"  style="font-family:Comic Sans MS;color:white;"  data-toggle="dropdown"  href="#/Blog">Friend<span class="caret"></span></a>
+       <a class="dropdown-toggle"  style="font-family:Comic Sans MS;color:red;"  data-toggle="dropdown"  href="#/Blog">Friend<span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#//view_friend">View Friend</a></li>
        <li><a href="#/search_friend">Search Friend</a></li>
       </ul>
     </li>
 	<li class="dropdown">
-       <a class="dropdown-toggle"  style="font-family:Comic Sans MS; color:white;"   data-toggle="dropdown"  href="#">Blog<span class="caret"></span></a>
+       <a class="dropdown-toggle"  style="font-family:Comic Sans MS; color:red;"   data-toggle="dropdown"  href="#">Blog<span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#/list_blog">List Blog</a></li>
        <li><a href="#/create_blog">Create Blog</a></li>
       </ul>
     </li>
     <li class="dropdown">
-       <a class="dropdown-toggle"  style="font-family:Comic Sans MS; color:white;" data-toggle="dropdown"  href="#/Blog">Job<span class="caret"></span></a>
+       <a class="dropdown-toggle"  style="font-family:Comic Sans MS; color:red;" data-toggle="dropdown"  href="#/Blog">Job<span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#/post_job">View Job</a></li>
        <li><a href="#/search_job">Search Job</a>        </li>
       </ul>
     </li>
     <li class="dropdown">
-       <a class="dropdown-toggle"  style="font-family:Comic Sans MS;color:white;"  data-toggle="dropdown"  href="#">Chat<span class="caret"></span></a>
+       <a class="dropdown-toggle"  style="font-family:Comic Sans MS;color:red;"  data-toggle="dropdown"  href="#">Chat<span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a href="#/chat">Lets Chat</a></li>
       
@@ -100,7 +100,7 @@ $(document).ready(
      </ul>
     <ul class="nav navbar-nav navbar-right">
 	
-		<li class="dropdown"><a  style="font-family:Comic Sans MS;color:white;"   href="#/login"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+		<li><a href="#" ng-click="ctrl.logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 		
 	
 	</ul>
