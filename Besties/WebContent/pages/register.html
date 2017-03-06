@@ -6,9 +6,9 @@
 </head>
 <style>
 body {
-background: url("http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/09/plain-black-full-hd-background_1.jpg"); }
+background: url("http://wallpapercave.com/wp/TNzUqgH.jpg"); }
  body { 
-  background: url(http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/09/plain-black-full-hd-background_1.jpg) no-repeat center center fixed; 
+  background: url(http://wallpapercave.com/wp/TNzUqgH.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -63,7 +63,7 @@ background: url("http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/0
 								<label class="col-md-2 control-lable" for="userid">ID</label>
 								<div class="col-md-7">
 									<input type="text" ng-model="ctrl.Userdetails.userid" id="userid"
-										class="userid form-control input-sm"
+										 class="userid form-control input-sm"
 										placeholder="Enter your ID" required ng-minlength="3" />
 								</div>
 							</div>
@@ -75,7 +75,7 @@ background: url("http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/0
 								<label class="col-md-2 control-lable" for="username">Name</label>
 								<div class="col-md-7">
 									<input type="text" ng-model="ctrl.Userdetails.username" id="username"
-										class="username form-control input-sm"
+										class="username form-control input-sm" pattern="[A-Z][a-z]{1,15}"
 										placeholder="Enter your name" required ng-minlength="3" />
 								</div>
 							</div>
@@ -86,7 +86,7 @@ background: url("http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/0
 								<label class="col-md-2 control-lable" for="password">Password</label>
 								<div class="col-md-7">
 									<input type="password" ng-model="ctrl.Userdetails.password"
-										id="password" class="username form-control input-sm"
+										id="password" class="username form-control input-sm" pattern=".{6,8}"
 										placeholder="Enter your password" required ng-minlength="3" />
 								</div>
 							</div>
@@ -110,7 +110,7 @@ background: url("http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/0
 								<label class="col-md-2 control-lable" for="contact">Mobile</label>
 								<div class="col-md-7">
 									<input type="tel" ng-model="ctrl.Userdetails.contact" id="contact"
-										class="mobile form-control input-sm"
+										pattern="[9|7|8][0-9]{9}" class="mobile form-control input-sm"
 										placeholder="Enter your contact number" required />
 
 								</div>
