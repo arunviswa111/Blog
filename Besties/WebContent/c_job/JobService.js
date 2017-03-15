@@ -1,132 +1,219 @@
 
 
-'job strict'; /* strictly follows the case i.e--case sensitive */
+	
+'use strict';
 
-app.service('JobService', [
-		'$http',
-		'$q',
-		'$rootScope',
-		function($http, $q, $rootScope) {
-			console.log("job SERvices.... in job service//")
-			var BASE_URL = 'http://localhost:9080/Bestiesb'
-			return {
-								
-				applyForJob:function(jobId){
-					return $http.post(BASE_URL+'/applyForJob/'+jobId)
-					.then(
-							function(response){
-								console.log('Calling job in job service....... ')
-								return response.data;
-							},
-							function(errResponse){
-								console.error('Error while applying job');
-								return $q.reject(errResponse);
-							}				
-			);
-		},
-		getJobDetails:function(jobId){
-			return $http.get(BASE_URL+'/getJobDetails/'+jobId)
-			.then(
-					function(response){
-						console.log('calling getjobdetails in jobService......js');
-						$rootScope.selectedJob=response.data;
-						return response.data;
-					},
-					function(errResponse){
-						console.error('Error while getting job details');
-						return $q.reject(errResponse);
-					}				
-		);
-		},
-				
-
-		getMyAppliedJobs : function() {
-					console.log("   /getMyAppliedJobs/.... in job service//")
-					return $http.get(BASE_URL + '/getMyAppliedJobs/' ).then(
-							function(response) {
-								return response.data;
-							},function(errResponse){
-								console.error('Error while getting getMy Applied jobs in sevice..js');
-								return $q.reject(errResponse);
-							}	
-
-					);
-				},
-
-				postAJob : function(job) {
-					console.log("   calling reject....in job service//")
-					return $http
-							.post(BASE_URL + '/postAJob/',job)
-							.then(function(response) {
-								return response.data;
-							},function(errResponse){
-								console.error('Error while posting a job in...sevice..js');
-								return $q.reject(errResponse);
-							}	
-
-
-							);
-				},
-
-			
-
-				rejectJobApplication : function(userId,jobId) {
-					console.log("   reject jobr....in job service//")
-					return $http.put(BASE_URL + '/rejectJobApplication/'+userId+"/"+ jobId).then(
-							function(response) {
-								console.error(' successss rejecting a job in...sevice..js');
-								return response.data;
-							},function(errResponse){
-								console.error('Error while rejecting a job in...sevice..js');
-								return $q.reject(errResponse);
-							}	
-
-					);
-				},
-
-				callForInterview : function(userId,jobId) {
-					console.log("   call for interview jobr....in job service//")
-					return $http.put(BASE_URL + '/callForInterview/'+userId, jobId).then(
-							function(response) {
-								return response.data;
-							}, null
-
-					);
-				},
-
-				selectUser : function(userId,jobId) {
-					console.log("   calling the authenticate jobr....in job service//")
-					return $http.put(BASE_URL + '/selectUser/'+userId, jobId).then(
+app
+		.controller(
+				'JobController',
+				[
 						
-							function(response) {
-								console.log("//select user in job service .js....")
-								return response.data;
-							}, function(errResponse) {
-								console.error('Error while selecting user ..in job service');
-								return $q.reject(errResponse);
-							}
+						'JobService','UserService',
+						'$location',
+						'$rootScope',
+						
+						function(JobService,UserService, $location, $rootScope) {
+						
+							console.log("jobController.....js")
+							var self = this;
+							
+							self.job = {
+								jobId : '',
+								jobTitle : '',
+								created_date : '',
+								jobDescription : '',
+								skillsRequired:'',
+								salary:'',
+								location:'',
+								status : '',
+								errorCode : '',
+								errorMessage : '',
+							};
+							self.jobs = [];
+							
+							self.applyForJob = applyForJob
+							
+							
+							/*APPLY FOR JOB*/
+							
+							function applyForJob(jobId){
+								console.log("*****applyForJob***in jobcontroller.js");
+								var currentUser = $rootScope.currentUser
+								console.log("currentUser.id:"+currentUser.userid)
+								//if (current user) ->>>not null,not empty and defined
+								if(typeof currentUser.userid == 'undefined')
+									{
+									alert("please login to apply for job")
+									console.log("user is not logged in***in job controller.js**")
+									return
+									}
+								console.log("**userId::"+currentUser.jobId+"applying for job.."+jobId)
+								JobService
+										.applyForJob(jobId)
+										.then(
+												function(d){
+														self.job=d;
+														alert(self.job.errorMessage)
+												},
+												function(errResponse){
+													console.log('error while applying for job request')
+												});
+														
+							}						
+										
+											 
+							
 
-					);
-				},
 
-				
-				getAllJobs : function() {
-					console.log("   /getAllJobs/....in job service//")
-					return $http.get(BASE_URL + '/getAllJobs/').then(
-							function(response) {
-								console.error(' successss /getAllJobs/ a job in...sevice..js');
-								return response.data;
-							},function(errResponse){
-								console.error('Error while /getAllJobs/ in...sevice..js');
-								return $q.reject(errResponse);
-							}	
+							/* get my applied jobS LIST........ .................................*/
+							self.getMyAppliedJobs = function() {
+								JobService
+										.getMyAppliedJobs()
+										.then(
+												function(d) {
+													self.jobs = d;
+													console.log("get all my jobs in jobcontroller.js....")
+												},
+												function(errResponse) {
+													console
+															.error('Error while fetching jobs');
+												});
+							};
+							
 
-					);
-				},
-			}
-		}
-		
-		]
+							/* reject job ....... ................................................*/
+							self.rejectJobApplication = function(userId) {
+								var jobID=$rootScope.selectedJob.jobId;
+								JobService
+										.rejectJobApplication(userId,jobId)
+										.then(
+												function(d) {
+													self.jobs = d;
+													alert("u hv successfully rejected appli.. jobcontroller.js...."+userId+"..."+jobId)
+												},
+												
+												function(errResponse) {
+													console
+															.error('Error while rejectJobApplication job...in job controller,js...');
+												});
+								
+							};
 
-);
+							self.callForInterview = function() {
+								var jobID=$rootScope.selectedJob.jobId;
+								console.log("callForInterview...")
+								JobService
+										.callForInterview()
+										.then(
+												function(d) {
+													self.job = d;
+													alert("application stats changed to call for interview")
+
+												},
+												function(errResponse) {
+													console
+															.error('Error while changing status call for intervie.');
+												});
+							};
+
+							self.selectUser = function(userId) {
+								var jobID=$rootScope.selectedJob.jobId;
+								console.log("selectUser...")
+								JobService
+										.selectUser(userId,jobID)
+										.then(
+												function(d) {
+													self.job = d;
+													self.getMyAppliedJobs
+													alert("application stats changed to selected user..")
+													//alert(self.job.errorMessage)
+
+												},
+
+												function(errResponse) {
+													console
+															.error('Error while selecting user status.. job.');
+												});
+							};
+							
+							
+							self.getAllJobs = function() {
+								
+								console.log("getAllJobs......in job controller.js")
+								JobService
+										.getAllJobs()
+										.then(
+												function(d) {
+													self.jobs = d;
+													
+													
+												},
+
+												function(errResponse) {
+													console
+															.error('Error while fetching all the jobs... jobcontroller.js.');
+												});
+							};
+
+
+							self.getAllJobs();
+							
+							self.submit = function() {
+								{
+									console.log('Saving New job', self.job);
+									self.postAJob(self.job);
+								}
+								self.reset();
+							};
+							
+							self.postAJob = function(job) {
+								console.log("submit a job...",self.job);
+								
+								JobService.postAJob(job).then(
+										function(d) {
+											
+											alert(" job is posted successfully")
+
+										}, function(errResponse) {
+											console
+											.error('Error while posting a job.. job.');
+								});
+							};
+
+							
+							
+							self.getJobDetails = getJobDetails
+							
+							function getJobDetails(jobId)
+							{
+								console.log('get job details of the id',jobId)
+								JobService.getJobDetails(jobId)
+											.then(function(d)
+													{
+												self.jobs=d;
+												$location.path('/view_job_details');
+													},
+													 function(errResponse) {
+														console
+														.error('Error while getting  job details.... jobcontroller.');
+													});
+							};
+							
+
+							self.reset = function() {
+								console.log('reset job....',self.job);
+								self.job = {
+										jobid : '',
+										title : '',
+										qualification : '',
+										created_date : '',
+										description : '',
+										status : '',
+										errorCode : '',
+										errorMessage : '',
+								};
+								//$scope.myForm.$setPristine(); // reset Form
+							};
+
+						} ]);
 

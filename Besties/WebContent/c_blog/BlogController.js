@@ -44,6 +44,7 @@ app
 
 							self.createBlog = function(Blog) {
 								console.log("createUser...")
+								alert("create Successfully")
 								BlogService
 										.createBlog(Blog)
 										.then(
@@ -59,6 +60,7 @@ app
 								{
 									console.log('Saving New User', self.Blog);
 									self.createBlog(self.Blog);
+									
 								}
 								self.reset();
 							};

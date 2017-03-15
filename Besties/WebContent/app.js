@@ -66,7 +66,7 @@ app.run(function ($rootScope, $location, $cookieStore, $http){
 
 	$rootScope.$on('$locationChangeStart', function(event, next, current){
 	console.log("$locationChangeStart")
-	//redirect to login page if not logged in and typing to access a restricted page
+	
 
 	var restrictedPage=$.inArray($location.path(), ['/login','/register']) ===-1;
 	console.log("restrictedPage:" +restrictedPage)

@@ -18,11 +18,13 @@ app
 							var self = this;
 							
 							self.job = {
-								jobid : '',
-								title : '',
-								qualification : '',
+								jobId : '',
+								jobTitle : '',
 								created_date : '',
-								description : '',
+								jobDescription : '',
+								skillsRequired:'',
+								salary:'',
+								location:'',
 								status : '',
 								errorCode : '',
 								errorMessage : '',
@@ -79,7 +81,7 @@ app
 							};
 							
 
-							/* CREATE job ....... ................................................*/
+							/* reject job ....... ................................................*/
 							self.rejectJobApplication = function(userId) {
 								var jobID=$rootScope.selectedJob.jobId;
 								JobService
@@ -165,12 +167,12 @@ app
 							};
 							
 							self.postAJob = function(job) {
-								console.log("submit a jobt...",self.job);
+								console.log("submit a job...",self.job);
 								
 								JobService.postAJob(job).then(
 										function(d) {
 											
-											alert(self.job.errorMessage)
+											alert(" job is posted successfully")
 
 										}, function(errResponse) {
 											console

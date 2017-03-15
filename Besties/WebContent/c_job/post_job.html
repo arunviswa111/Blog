@@ -14,7 +14,7 @@
  <div class="form-group col-md-12">
 <label class="col-md-2 control-lable" for="title">Title</label>
 <div class="col-md-7">
-<input type="text" width="100" height="50" ng-model="ctrl.job.title" id="title"
+<input type="text" width="100" height="50" ng-model="ctrl.job.jobTitle" id="title"
 class="title form-control input-sm" placeholder="Enter the job title">
 </div>
 </div>
@@ -24,7 +24,7 @@ class="title form-control input-sm" placeholder="Enter the job title">
 <div class="form-group col-md-12">
 <label class="col-md-2 control-lable" for="qualification">Qualification</label>
 <div class="col-md-7">
-<input type="text" width="100" height="50" ng-model="ctrl.job.qualification" id="qualification"
+<input type="text" width="100" height="50" ng-model="ctrl.job.skillsRequired" id="qualification"
 class=" qualification form-control input-sm" >
 </div>
 </div>
@@ -34,8 +34,28 @@ class=" qualification form-control input-sm" >
 <div class="form-group col-md-12">
 <label class="col-md-2 control-lable" for="description">Description</label>
 <div class="col-md-7">
-<textarea rows="20" cols="300" ng-model="ctrl.job.description" id="description"
+<textarea rows="20" cols="300" ng-model="ctrl.job.jobDescription" id="description"
 class="description form-control input-sm"></textarea>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-12">
+<label class="col-md-2 control-lable" for="salary">salary</label>
+<div class="col-md-7">
+<input type="text" width="100" height="50" ng-model="ctrl.job.salary" id="salary"
+class=" qualification form-control input-sm" >
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-12">
+<label class="col-md-2 control-lable" for="location">location</label>
+<div class="col-md-7">
+<input type="text" width="100" height="50" ng-model="ctrl.job.location" id="location"
+class=" qualification form-control input-sm" >
 </div>
 </div>
 </div>
